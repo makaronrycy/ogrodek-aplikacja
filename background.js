@@ -3,6 +3,13 @@ let data = JSON.parse(localStorage.getItem("banned_sites"));
 if(!data){
     data=[];
 } 
+function checkBanned(url){
+    data.forEach(element => {
+        if (url.includes(element)){
+            console.log("I'm banned!")
+        }
+    });
+}
 
 chrome.tabs.onUpdated.addListener(
     function(tabId,changeInfo,tab) {
@@ -18,14 +25,3 @@ chrome.tabs.onActivated.addListener(tab => {
         checkBanned(current_tab_info.url);
     });
 });
-chrome.browserAction.onClicked.addListener(function (tab) {
-    chrome.tabs.update({ url: "options.html" });
-  });
-
-function checkBanned(url){
-    data.forEach(element => {
-        if (url.includes(element)){
-            console.log("I'm banned!")
-        }
-    });
-}
