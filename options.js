@@ -10,16 +10,23 @@ function save_options()
   {
     var bannedSites = [];
   }
-  bannedSites.push(select.value);
-  localStorage.setItem('banned_sites', JSON.stringify(bannedSites));
-  
-  // Update status to let user know options were saved.
+
+  if (select.value)
+  {
+    bannedSites.push(select.value);
+    localStorage.setItem('banned_sites', JSON.stringify(bannedSites));
+    // Update status to let user know options were saved.
+    var status = document.getElementById("status");
+    status.innerHTML = "Options Saved.";
+    setTimeout(function() 
+    {
+      status.innerHTML = "";
+    }, 2000);
+    show_options();
+    return;
+  }  
   var status = document.getElementById("status");
-  status.innerHTML = "Options Saved.";
-  setTimeout(function() {
-    status.innerHTML = "";
-  }, 2000);
-  show_options();
+  status.innerHTML = "Couldn't track site. (Blank)";
 }
 
 function show_options() {
