@@ -6,3 +6,13 @@
 --color4: #23022E;
 --color5: 0081A7
 }
+#container
+{
+    height: 256px;
+    width: 256px;
+}
+#list
+{
+    height: 128px;
+    overflow-y: scroll;
+}

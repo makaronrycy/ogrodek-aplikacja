@@ -7,3 +7,8 @@
     --color5: 0081A7
     }
     
+#container
+{
+    height: 256px;
+    width: 256px;
+}

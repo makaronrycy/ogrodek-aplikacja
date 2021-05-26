@@ -22,7 +22,6 @@ function save_options()
   show_options();
 }
 
-// Restores select box state to saved value from localStorage.
 function show_options() {
   var sites = JSON.parse(localStorage.getItem('banned_sites'));
   if (!sites) 
