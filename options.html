@@ -4,6 +4,7 @@
         <title>Opcje Garden</title>
         <meta charset = "utf-8">
         <link rel="stylesheet" href="styl.css">
+        <script type="text/javascript" src="options.js"></script>
     </head>
     <body>
         <header>
@@ -11,11 +12,13 @@
         </header>
         <div>
             <p>Lista trackowanych stron:</p>
-            <ul class="trackList">
+            <ul id="trackList">
 
             </ul>
             <label>Dodaj strone:<input type="text" id="urlTrack" name="urlTrack"></label>
             <button id="addTrack">Dodaj</button>
+            <button id="showTrack">Pokaż</button>
+            <p id="status"></p>
         </div>
         
     </body>
