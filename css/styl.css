@@ -6,10 +6,15 @@
 --color4: #23022E;
 --color5: 0081A7
 }
+body, h1{
+    margin: 0;
+    padding: 0;
+}
 #container
 {
     height: 256px;
     width: 256px;
+    background-image:url("../sprites/background.png");
 }
 #list
 {
