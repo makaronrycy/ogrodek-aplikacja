@@ -3,23 +3,26 @@
     <head>
         <title>Opcje Garden</title>
         <meta charset = "utf-8">
-        <link rel="stylesheet" href="styl.css">
+        <link rel="stylesheet" href="./css/styl.css">
         <script type="text/javascript" src="options.js"></script>
     </head>
     <body>
-        <header>
-            <h1>Opcje Garden</h1>
-        </header>
-        <div>
-            <p>Lista trackowanych stron:</p>
-            <ul id="trackList">
+        <div id="container">
+            <header>
+                <h1>Opcje Garden</h1>
+            </header>
+            <div>
+                <p>Lista trackowanych stron:</p>
+                <div id="list">
+                    <ul id="trackList">
 
-            </ul>
-            <label>Dodaj strone:<input type="text" id="urlTrack" name="urlTrack"></label>
-            <button id="addTrack">Dodaj</button>
-            <button id="showTrack">Pokaż</button>
-            <p id="status"></p>
+                    </ul>
+                </div>
+                <label>Dodaj strone:<input type="text" id="urlTrack" name="urlTrack"></label>
+                <button id="addTrack">Dodaj</button>
+                <button id="showTrack">Pokaż</button>
+                <p id="status"></p>
+            </div>
         </div>
-        
     </body>
 </html>
