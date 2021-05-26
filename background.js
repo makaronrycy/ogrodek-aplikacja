@@ -1,6 +1,9 @@
 console.log("background.js")
 function checkBanned(url){
     let data = JSON.parse(localStorage.getItem("banned_sites"));
+    if(!data){
+        data=[];
+    }
     data.forEach(element => {
         if (url.includes(element)){
             console.log("I'm banned!")
