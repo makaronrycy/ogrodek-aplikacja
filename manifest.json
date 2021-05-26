@@ -1,0 +1,24 @@
+{
+
+    "manifest_version": 3,
+    "name": "WorkGarden",
+    "version": "1.0",
+  
+    "description": "Motywuje do nie korzystania ze stron zabierających czas, tylko do pracowania tworząc ogródek.",
+  
+    "icons": {
+      "48": "icons/addon"
+    },
+    "background": {
+        "service_worker": "background.js"
+      },
+    "permissions": [
+        "tabs"
+    ]
+        
+    
+    
+    
+  
+  }
+  
