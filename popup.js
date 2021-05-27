@@ -24,6 +24,15 @@ window.onload = function(){
             this.description = null;
             this.dead = false;
         }
+
+        Death(){
+            localStorage.setItem('death', JSON.stringify("false"));
+            localStorage.removeItem('plant');
+            document.getElementById("image").src = `/Sprites/dead_flower.png`;
+            const htmldeath = `<p>Roślina niestety umarła przez to że wszedłeś na zablokowaną stronę!</p>`
+            area.insertAdjacentHTML("beforeend",htmldeath);
+        }
+
         render(){
                 console.log("render smierc"+this.dead)
                 console.log(this.type)
@@ -47,9 +56,8 @@ window.onload = function(){
         const x = setInterval(function() {
             let death = JSON.parse(localStorage.getItem("death"));
             console.log("Śmierć:"+death);
-            if(death){
-                plant.dead = true;
-                plant.saveToStorage();
+            if(death==true){
+                plant.Death();
                 clearInterval(x);
                 return;
             }
@@ -89,7 +97,7 @@ window.onload = function(){
                 plant.saveToStorage();
                 plant.updateImg();
             
-        }, 1000);
+        }, 10);
         }
         updateImg(){
             document.getElementById("image").src = `/Sprites/${this.type}${this.stage}.png`;
@@ -116,11 +124,6 @@ window.onload = function(){
     }else{
         store = [];
     };
-    function Death(){
-        localStorage.removeItem('plant');
-        const htmldeath = `<p>Roślina niestety umarła przez to że wszedłeś na zablokowaną stronę!</p>`
-        area.insertAdjacentHTML("beforeend",htmldeath);
-    }
 
     function loadPlant(store){
         
@@ -128,7 +131,6 @@ window.onload = function(){
         store.forEach(function(element){
             console.log(element.dead);
             if(element.dead){
-            Death();
             return;
         }   
             let plant = new Plant(element.type,element.stage,element.time,element.deadline);

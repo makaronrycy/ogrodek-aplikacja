@@ -15,10 +15,11 @@ function checkBanned(url){
             {
                 sites.push(url)
                 death = true;
+                localStorage.setItem('death', JSON.stringify(death));
             }
         }
     });
-    localStorage.setItem('death', JSON.stringify(death));
+    
 }
 
 chrome.tabs.onUpdated.addListener(
