@@ -8,7 +8,7 @@ function save_options()
   }
   else
   {
-    var bannedSites = "";
+    var bannedSites = [];
   }
 
   if (select.value)

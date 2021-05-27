@@ -2,6 +2,7 @@ console.log("background.js")
 
 function checkBanned(url){
     let data = JSON.parse(localStorage.getItem("banned_sites"));
+    var death = false;
     var sites = [];
     if(!data){
         data=[];
@@ -13,10 +14,11 @@ function checkBanned(url){
             if(!sites.includes(url))
             {
                 sites.push(url)
+                death = true;
             }
         }
     });
-    localStorage.setItem('sitesVisited', JSON.stringify(sites));
+    localStorage.setItem('death', JSON.stringify(death));
 }
 
 chrome.tabs.onUpdated.addListener(
