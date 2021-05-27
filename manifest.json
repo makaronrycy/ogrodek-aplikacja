@@ -7,9 +7,7 @@
     "description": "Motywuje do nie korzystania ze stron zabierających czas, tylko do pracowania tworząc ogródek.",
   
 
-    "background": {
-        "scripts": ["background.js"]
-    },
+    "background": { "scripts": ["jquery-3.6.0.min.js","background.js"] },
     "browser_action":{
         "default_popup":"popup.html",
         "script":"popup.js"
