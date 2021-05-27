@@ -86,6 +86,7 @@ window.onload = function(){
                     clearInterval(x);
                     plant.saveToStorage(); 
                     plant.updateImg();
+                    plant.finishGrowing();
                     return;
                 }
                 const days = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -103,7 +104,22 @@ window.onload = function(){
             document.getElementById("image").src = `/Sprites/${this.type}${this.stage}.png`;
         }
         finishGrowing(){
-            
+            var desc = prompt("Hooray! Your planrt has grown! Describe your productive time", "Here");
+            var data = [];
+            data.push({
+                type: this.type,
+                time: this.time,
+                desc: desc
+            });
+            console.log("yeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
+            var tableGrown = JSON.parse(localStorage.getItem("grownPlants"));
+            if (tableGrown==null)
+            {
+                tableGrown=[];
+            }
+            tableGrown.push(data)
+            localStorage.setItem("grownPlants",JSON.stringify(tableGrown));
+            localStorage.removeItem('plant');
         }
         saveToStorage(){
             const table =[];
