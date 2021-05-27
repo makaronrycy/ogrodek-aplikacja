@@ -8,7 +8,12 @@ timeleft: date - date.now
 let data = localStorage.getItem("plant");
 
 let store, id;
+class Clock{
+    constructor(timeleft){
+    
+    }
 
+}
 class Plant{
     constructor(id,type,stage,timeleft){
         this.id = id;
@@ -18,7 +23,25 @@ class Plant{
         this.timeleft = timeleft;
         this.description = null;
     }
+    render(){
+        const plant = document.getElementById("ground");
 
+    }
+    start(){
+        
+    }
+    stop(){
+
+    }
+    changeStage(){
+
+    }
+    finishGrowing(){
+
+    }
+    saveToStorage(){
+
+    }
 }
 
 if(data){
@@ -31,13 +54,31 @@ if(data){
 };
 
 window.onload = function(){
-    const plantArea = document.getElementById("ground");
     const timehours = document.getElementById("time");
     const addPlant = document.getElementById("addPlant");
-    
-    addPlant.addEventListener('click',function(){
-        console.log(timehours.value);
-        
+    let type;
 
+    addPlant.addEventListener('click',function(){
+        const time = timehours.value;
+        if(!time){
+            return;
+        }
+        if(time >=0 && time < 2){
+            type = 1;
+        }
+        if(time >=2 && time < 4){
+            type = 2;
+        }
+        if(time >=4 && time < 8){
+            type = 3;
+        }
+        if(time >= 8){
+            type = 4;
+        }
+        addPlant.parentNode.parentNode.removeChild(addPlant.parentNode);
+        const deadline = Date.now() + (time * 3600000)
+        console.log(deadline);
+        let plant = new Plant(id,type,1,deadline)
+        plant.Render();
     })
 }
