@@ -25,7 +25,7 @@ window.onload = function(){
             this.dead = false;
         }
         render(){
-                
+                console.log("render smierc"+this.dead)
                 console.log(this.type)
                 console.log("this.deadline:"+this.deadline);
                 console.log("this.time:"+this.time);
@@ -49,6 +49,7 @@ window.onload = function(){
             console.log("Śmierć:"+death);
             if(death){
                 plant.dead = true;
+                plant.saveToStorage();
                 clearInterval(x);
                 return;
             }
@@ -103,7 +104,8 @@ window.onload = function(){
             stage: this.stage, 
             time: this.time,
             deadline:this.deadline,
-            description: this.description 
+            description: this.description ,
+            dead: this.dead
             });
             localStorage.setItem("plant",JSON.stringify(table));
         }
@@ -115,18 +117,19 @@ window.onload = function(){
         store = [];
     };
     function Death(){
-        window.localStorage.removeItem('plant');
+        localStorage.removeItem('plant');
         const htmldeath = `<p>Roślina niestety umarła przez to że wszedłeś na zablokowaną stronę!</p>`
         area.insertAdjacentHTML("beforeend",htmldeath);
-
     }
 
     function loadPlant(store){
         
         addPlant.parentNode.parentNode.removeChild(addPlant.parentNode);
         store.forEach(function(element){
+            console.log(element.dead);
             if(element.dead){
             Death();
+            return;
         }   
             let plant = new Plant(element.type,element.stage,element.time,element.deadline);
             plant.render();  
