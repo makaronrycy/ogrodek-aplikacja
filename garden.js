@@ -1,13 +1,16 @@
-function addToGarden(type,time,desc){
+window.onload = function(){
+    const area = document.getElementById("workarea");
+    let grownPlants = JSON.parse(localStorage.getItem("grownPlants"));
+    console.log(grownPlants);
+    function addToGarden(type,time,desc){
+    const timehours = time / 3600000; 
     html = `<div>
-        <img src=/Sprites/${type}.png"></img>
+        <img src="./Sprites/${type}5.png"></img>
         <p>Czas: ${time}</p>
         <p>${desc}</p>
     </div>`
+    area.insertAdjacentHTML("beforeend",html);
 }
-
-window.onload() = function(){
-    let grownPlants = JSON.parse(localStorage.getItem("grownPlants"));
     if(grownPlants){
         grownPlants.forEach(function(element){
             addToGarden(element.type,element.time,element.desc);

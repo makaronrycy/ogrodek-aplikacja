@@ -8,6 +8,10 @@ timeleft: date - date.now
 let data = localStorage.getItem("plant");
 console.log(data);
 let store;
+let tableGrown = JSON.parse(localStorage.getItem("grownPlants"));
+if(!tableGrown){
+    tableGrown = [];
+}
 
 window.onload = function(){
     const clear = document.querySelector(".clear");
@@ -104,20 +108,13 @@ window.onload = function(){
             document.getElementById("image").src = `/Sprites/${this.type}${this.stage}.png`;
         }
         finishGrowing(){
-            var desc = prompt("Hooray! Your planrt has grown! Describe your productive time", "Here");
-            var data = [];
-            data.push({
+            var desc = prompt("Hooray! Your planrt has grown! Describe your productive time", "Here"); 
+            tableGrown.push({
                 type: this.type,
                 time: this.time,
                 desc: desc
             });
             console.log("yeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
-            var tableGrown = JSON.parse(localStorage.getItem("grownPlants"));
-            if (tableGrown==null)
-            {
-                tableGrown=[];
-            }
-            tableGrown.push(data)
             localStorage.setItem("grownPlants",JSON.stringify(tableGrown));
             localStorage.removeItem('plant');
         }
@@ -188,7 +185,7 @@ window.onload = function(){
                     img = "blue_flower";
                 break;
             }
-            const ftime = time *36000;
+            const ftime = time *3600000;
             
             addPlant.parentNode.parentNode.removeChild(addPlant.parentNode);
             const deadline = Date.now() + ftime;

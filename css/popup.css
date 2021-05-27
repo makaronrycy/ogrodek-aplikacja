@@ -1,12 +1,4 @@
-/* COLOR PALETTE*/
-:root
-{
-    --color1 : #95C473;
-    --color2: #053225;
-    --color3: #ADA8B6;
-    --color4: #23022E;
-    --color5: 0081A7
-}
+
 body, h1{
     margin: 0;
     padding: 0;
@@ -16,4 +8,8 @@ body, h1{
     height: 256px;
     width: 256px;
     background-image:url("../sprites/background.png");
+}
+#workarea{
+    display:flex;
+    justify-content: center;
 }
