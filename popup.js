@@ -15,34 +15,24 @@ window.onload = function(){
     const addPlant = document.getElementById("addPlant");
     let type;
     class Plant{
-        constructor(id,type,stage,timeleft){
+        constructor(id,type,stage,time,deadline){
             this.id = id;
             this.growing = true;
             this.type = type;
             this.stage = stage;
-            this.timeleft = timeleft;
+            this.time = time;
+            this.deadline =  deadline;
             this.description = null;
+            
         }
         render(){
             const plant = document.getElementById("workarea");
-            let img;
             console.log(this.type)
-            switch(this.type){
-                case 1:
-                    img = "orange_flower"
-                break;
-                case 2:
-                    img = "purp_flower"
-                break;
-                case 3:
-                    img = "red_flower"
-                break;
-                case 4:
-                    img = "blue_flower";
-                break;
-            }
+            console.log("this.deadline:"+this.deadline);
+            console.log("this.time:"+this.time);
+            
             const html = `<div>
-                <img witdh ="128px" height="128px" src="/Sprites/${img}${this.stage}.png"></img>
+                <img id ="image" witdh ="128px" height="128px" src="/Sprites/${this.type}${this.stage}.png"></img>
             </div>
             <div>
                 <p id="demo">
@@ -53,14 +43,39 @@ window.onload = function(){
         }
         start(){
         // Update the count down every 1 second
-        const time = this.timeleft;
+        const deadline = this.deadline;
+        const duration = this.time;
+        const plant = this;
         const x = setInterval(function() {
-            
+            let datasites = localStorage.getItem("sitesVisited");
+            console.log("Zbanowana storna:"+datasites);
+            if(datasites == null){
             const now = new Date().getTime();
-            const distance = time - now;
-            if (distance < 0) {
+            const distance = deadline - now;
+            const time = duration - distance;
+            let progress = time/duration;
+            console.log("Deadline:"+deadline);
+            console.log("Time:"+time);
+            console.log("Distance:"+distance);
+            console.log("Stage progress:"+progress);
+            if(progress<0.25){
+                plant.stage = 1;
+            }else if(progress<0.5){
+                plant.stage = 2;
+            }else if(progress<0.75){
+                plant.stage = 3;
+            }else if(progress<0.98){
+                plant.stage = 4;
+            }else{
+                plant.stage = 5;
+            }
+            console.log("Stage:"+plant.stage);
+            if (distance <= 0) {
                 clearInterval(x);
-                this.finishGrowing();
+                plant.saveToStorage(); 
+                plant.updateImg();
+                return;
+                
             }
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -68,14 +83,17 @@ window.onload = function(){
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
             document.getElementById("demo").innerHTML = days + "d " + hours + "h "
             + minutes + "m " + seconds + "s ";
-            
+            plant.saveToStorage();
+            plant.updateImg();
+        }
         }, 1000);
         }
         stop(){
 
         }
-        changeStage(){
-
+        updateImg(){
+            document.getElementById("image").src = `/Sprites/${this.type}${this.stage}.png`;
+            
         }
         finishGrowing(){
             
@@ -87,7 +105,8 @@ window.onload = function(){
             growing: this.growing,
             type: this.type ,
             stage: this.stage, 
-            timeleft: this.timeleft, 
+            time: this.time,
+            deadline:this.deadline,
             description: this.description 
             });
             id++;
@@ -107,8 +126,7 @@ window.onload = function(){
         addPlant.parentNode.parentNode.removeChild(addPlant.parentNode);
         store.forEach(function(element){
             if(element.growing == true){
-                let plant = new Plant(element.id,element.type,element.stage,element.timeleft);
-
+                let plant = new Plant(element.id,element.type,element.stage,element.time,element.deadline);
                 plant.render();
                 
             }
@@ -132,9 +150,24 @@ window.onload = function(){
                 type = 4;
             }
             addPlant.parentNode.parentNode.removeChild(addPlant.parentNode);
-            const deadline = Date.now() + (time * 3600000)
+            const ftime = time *36000;
+            switch(type){
+                case 1:
+                    img = "orange_flower"
+                break;
+                case 2:
+                    img = "purp_flower"
+                break;
+                case 3:
+                    img = "red_flower"
+                break;
+                case 4:
+                    img = "blue_flower";
+                break;
+            }
+            const deadline = Date.now() + ftime;
             console.log(deadline);
-            let plant = new Plant(id,type,1,deadline)
+            let plant = new Plant(id,img,1,ftime,deadline)
             plant.render();
         })
     }
