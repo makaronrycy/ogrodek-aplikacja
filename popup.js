@@ -114,16 +114,14 @@ window.onload = function(){
                 time: this.time,
                 desc: desc
             });
-<<<<<<< HEAD
             console.log("yeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
-=======
             var tableGrown = JSON.parse(localStorage.getItem("grownPlants"));
             if (tableGrown==null)
             {
                 tableGrown=[];
             }
             tableGrown.push(data)
->>>>>>> 1de77edd87ec715ddd05ffa898514be5390ba79b
+
             localStorage.setItem("grownPlants",JSON.stringify(tableGrown));
             localStorage.removeItem('plant');
         }
