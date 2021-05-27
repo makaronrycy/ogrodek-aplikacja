@@ -6,7 +6,7 @@ window.onload = function(){
     const timehours = time / 3600000; 
     html = `<div>
         <img src="./Sprites/${type}5.png"></img>
-        <p>Czas: ${time}</p>
+        <p>Czas: ${timehours}</p>
         <p>${desc}</p>
     </div>`
     area.insertAdjacentHTML("beforeend",html);

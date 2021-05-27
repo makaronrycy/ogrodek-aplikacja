@@ -116,12 +116,6 @@ window.onload = function(){
             });
             console.log("yeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
             var tableGrown = JSON.parse(localStorage.getItem("grownPlants"));
-            if (tableGrown==null)
-            {
-                tableGrown=[];
-            }
-            tableGrown.push(data)
-
             localStorage.setItem("grownPlants",JSON.stringify(tableGrown));
             localStorage.removeItem('plant');
         }
