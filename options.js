@@ -44,11 +44,23 @@ function show_options() {
     document.getElementById("trackList").appendChild(node);     
   }
 }
+function delete_option(){
+
+}
 
 window.onload = function()
 {
   document.getElementById("addTrack").addEventListener('click', save_options);
+  document.getElementById("trackList").addEventListener('click',function(event){
+    const element = event.target;
+    console.log(element);
+    if(element){
+      element.parentNode.removeChild(element);
+    }
+
+  })
   show_options();
+  
 }  
   
   

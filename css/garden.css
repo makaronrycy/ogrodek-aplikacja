@@ -14,11 +14,13 @@ body, h1{
 }
 #workarea{
     display:flex;
-    overflow-x: scroll;
-    position: relative;
-    justify-content: center;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
 }
-#workarea p{
+#workarea span{
+    display:block;
     text-align: center;
     background-color: darkgray;
+    margin:0px;
 }
