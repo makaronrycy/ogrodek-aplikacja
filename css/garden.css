@@ -18,6 +18,7 @@ body, h1{
     flex-direction: row;
     flex-wrap: nowrap;
     overflow-x: auto;
+    height:156px;
 }
 #desc{
     display:absolute;

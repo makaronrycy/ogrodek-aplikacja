@@ -102,7 +102,7 @@ window.onload = function(){
                 plant.saveToStorage();
                 plant.updateImg();
             
-        }, 100);
+        }, 10);
         }
         updateImg(){
             document.getElementById("image").src = `/Sprites/${this.type}${this.stage}.png`;
@@ -192,7 +192,7 @@ window.onload = function(){
                     img = "blue_flower";
                 break;
             }
-            const ftime = time *3600000;
+            const ftime = time *3600;
             
             addPlant.parentNode.parentNode.removeChild(addPlant.parentNode);
             const deadline = Date.now() + ftime;
