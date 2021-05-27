@@ -33,7 +33,7 @@ window.onload = function(){
             localStorage.setItem('death', JSON.stringify("false"));
             localStorage.removeItem('plant');
             document.getElementById("image").src = `/Sprites/dead_flower.png`;
-            const htmldeath = `<p>Roślina niestety umarła przez to że wszedłeś na zablokowaną stronę!</p>`
+            const htmldeath = `<p>Oh no! Your plant withered! Keep out from your blacklisted websites!</p>`
             area.insertAdjacentHTML("beforeend",htmldeath);
         }
 
@@ -114,7 +114,16 @@ window.onload = function(){
                 time: this.time,
                 desc: desc
             });
+<<<<<<< HEAD
             console.log("yeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
+=======
+            var tableGrown = JSON.parse(localStorage.getItem("grownPlants"));
+            if (tableGrown==null)
+            {
+                tableGrown=[];
+            }
+            tableGrown.push(data)
+>>>>>>> 1de77edd87ec715ddd05ffa898514be5390ba79b
             localStorage.setItem("grownPlants",JSON.stringify(tableGrown));
             localStorage.removeItem('plant');
         }
