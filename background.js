@@ -16,7 +16,6 @@ function checkBanned(url){
             }
         }
     });
-    alert(sites);
     localStorage.setItem('sitesVisited', JSON.stringify(sites));
 }
 
