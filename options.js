@@ -44,18 +44,23 @@ function show_options() {
     document.getElementById("trackList").appendChild(node);     
   }
 }
-function delete_option(){
-
-}
 
 window.onload = function()
 {
+  const track = document.getElementById("trackList");
   document.getElementById("addTrack").addEventListener('click', save_options);
-  document.getElementById("trackList").addEventListener('click',function(event){
+  track.addEventListener('click',function(event){
     const element = event.target;
-    console.log(element);
+    const url = element.innerHTML;
     if(element){
       element.parentNode.removeChild(element);
+      const optionList = JSON.parse(localStorage.getItem('banned_sites'));
+      for(var i = 0; i < optionList.length; i++){
+        if(optionList[i] == url){
+          optionList.splice(i,1);
+        }
+      }
+      localStorage.setItem('banned_sites', JSON.stringify(optionList));
     }
 
   })
