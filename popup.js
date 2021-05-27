@@ -6,14 +6,10 @@ timeleft: date - date.now
 */
 //blue: 2hour, purp:4hour, red:8hour, blue:
 let data = localStorage.getItem("plant");
-
+console.log(data);
 let store, id;
-class Clock{
-    constructor(timeleft){
-    
-    }
 
-}
+window.onload = function(){
 class Plant{
     constructor(id,type,stage,timeleft){
         this.id = id;
@@ -24,11 +20,51 @@ class Plant{
         this.description = null;
     }
     render(){
-        const plant = document.getElementById("ground");
-
+        const plant = document.getElementById("workarea");
+        let img;
+        console.log(this.type)
+        switch(this.type){
+            case 1:
+                img = "orange_flower"
+            break;
+            case 2:
+                img = "purp_flower"
+            break;
+            case 3:
+                img = "red_flower"
+            break;
+            case 4:
+                img = "blue_flower";
+            break;
+        }
+        const html = `<div>
+            <img witdh ="128px" height="128px" src="/Sprites/${img}${this.stage}.png"></img>
+        </div>
+        <div>
+            <p id="demo">
+        </div>`
+        plant.insertAdjacentHTML('beforeend',html);
+        this.saveToStorage();
+        this.start();
     }
     start(){
-        
+    // Update the count down every 1 second
+    const time = this.timeleft;
+    const x = setInterval(function() {
+
+        const now = new Date().getTime();
+        const distance = time - now;
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+        + minutes + "m " + seconds + "s ";
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("demo").innerHTML = "EXPIRED";
+        }
+    }, 1000);
     }
     stop(){
 
@@ -40,10 +76,19 @@ class Plant{
 
     }
     saveToStorage(){
-
+        const table =[];
+        table.push({
+        id: this.id,
+        growing: this.growing,
+        type: this.type ,
+        stage: this.stage, 
+        timeleft: this.timeleft, 
+        description: this.description 
+        });
+        id++;
+        localStorage.setItem("plant",JSON.stringify(table));
     }
 }
-
 if(data){
     store = JSON.parse(data);
     loadPlant(store);
@@ -53,7 +98,15 @@ if(data){
     id = 0;
 };
 
-window.onload = function(){
+function loadPlant(store){
+    store.forEach(function(element){
+        if(element.growing == true){
+            let plant = new Plant(element.id,element.type,element.stage,element.timeleft);
+            plant.render();
+        }
+    });
+}
+    
     const timehours = document.getElementById("time");
     const addPlant = document.getElementById("addPlant");
     let type;
@@ -79,6 +132,6 @@ window.onload = function(){
         const deadline = Date.now() + (time * 3600000)
         console.log(deadline);
         let plant = new Plant(id,type,1,deadline)
-        plant.Render();
+        plant.render();
     })
 }
