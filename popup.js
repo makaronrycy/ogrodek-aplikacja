@@ -102,7 +102,7 @@ window.onload = function(){
                 plant.saveToStorage();
                 plant.updateImg();
             
-        }, 10);
+        }, 100);
         }
         updateImg(){
             document.getElementById("image").src = `/Sprites/${this.type}${this.stage}.png`;

@@ -19,10 +19,15 @@ body, h1{
     flex-wrap: nowrap;
     overflow-x: auto;
 }
-#workarea span{
-    display:block;
+#desc{
+    display:absolute;
     text-align: center;
     background-color: rgba(255, 255, 255, 0.7);
     border-radius: 5px;
     margin:0px;
+    height: fit-content;
+}
+#desc p{
+    margin:0px;
+    height: fit-content;
 }

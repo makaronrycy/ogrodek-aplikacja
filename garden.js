@@ -17,7 +17,7 @@ window.onload = function(){
             <img class="plant_class" id="${id}" src="./Sprites/${type}5.png"></img>
             
         </div>`
-        area.insertAdjacentHTML("beforeend",html);
+        area.insertAdjacentHTML("afterbegin",html);
     }
     if(grownPlants){
         for(var i=0;i<grownPlants.length;i++){
@@ -27,6 +27,15 @@ window.onload = function(){
 
     }
 
-    document.getElementsByClassName("plant_class").addEventListener("mouseover", show_detail);
+    document.getElementById("workarea").addEventListener("mouseover", function(event){
+        
+        var _plant = event.target.id;
+        console.log(_plant);
+        var __plant = grownPlants[_plant];
+        console.log(__plant);
+        document.getElementById("plantInfo").innerHTML=__plant.time/3600000;
+        document.getElementById("plantInfo2").innerHTML=__plant.desc;
+
+    });
 }
 //<span><p>Time: ${timehours} hours</p><p>${desc}</p></span>
