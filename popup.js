@@ -109,13 +109,19 @@ window.onload = function(){
         }
         finishGrowing(){
             var desc = prompt("Hooray! Your planrt has grown! Describe your productive time", "Here"); 
+            
+            var tableGrown = JSON.parse(localStorage.getItem("grownPlants"));
+            if(tableGrown==null)
+            {
+                tableGrown=[];
+            }
             tableGrown.push({
                 type: this.type,
                 time: this.time,
                 desc: desc
             });
-            console.log("yeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
-            var tableGrown = JSON.parse(localStorage.getItem("grownPlants"));
+            
+            
             localStorage.setItem("grownPlants",JSON.stringify(tableGrown));
             localStorage.removeItem('plant');
         }
