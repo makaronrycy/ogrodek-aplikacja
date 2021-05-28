@@ -8,6 +8,12 @@ body, h1{
     height: 256px;
     width: 256px;
     background-image:url("../sprites/background.png");
+    display:flex;
+    flex-flow:row wrap;
+    justify-content: center;
+}
+header{
+    text-align: center;
 }
 #list
 {
@@ -19,7 +25,23 @@ body, h1{
     background-color:rgba(255, 255, 255, 0.5);
     border-radius: 3%;
 }
+#input{
+    text-align: center;
+}
 li:hover{
     text-decoration: line-through;
     color:red;
+}
+button{
+    background-color: rgb(238, 238, 238);
+    border: 1px solid black;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    overflow: visible;
+    padding:4px;
+}
+button:hover{
+    background-color: rgb(194, 194, 194);
 }

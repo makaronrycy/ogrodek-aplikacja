@@ -9,7 +9,6 @@ function checkBanned(url){
     }
     data.forEach(element => {
         if (url.includes(element)){
-            console.log("I'm banned!")
             //document.getElementById("status").innerHTML="Plants can't grow!"+"<br/>"+"Please close "+url;
             if(!sites.includes(url))
             {
@@ -23,16 +22,14 @@ function checkBanned(url){
 }
 
 chrome.tabs.onUpdated.addListener(
-    function(tabId,changeInfo,tab) {
+    function(tabId,changeInfo) {
       if (changeInfo.url) {
-        console.log("OnUpdated: "+changeInfo.url);
         checkBanned(changeInfo.url);
       }
     }
   );
 chrome.tabs.onActivated.addListener(tab => {
     chrome.tabs.get(tab.tabId,current_tab_info=>{
-        console.log("OnActivated: "+current_tab_info.url);
         checkBanned(current_tab_info.url);
     });
 });

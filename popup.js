@@ -14,7 +14,6 @@ if(!tableGrown){
 }
 
 window.onload = function(){
-    const clear = document.querySelector(".clear");
     const timehours = document.getElementById("time");
     const addPlant = document.getElementById("addPlant");
     const area = document.getElementById("workarea");
@@ -108,7 +107,7 @@ window.onload = function(){
             document.getElementById("image").src = `/Sprites/${this.type}${this.stage}.png`;
         }
         finishGrowing(){
-            var desc = prompt("Hooray! Your planrt has grown! Describe your productive time", "Here"); 
+            var desc = prompt("Hooray! Your plant has grown! Describe your productive time", "Here"); 
             
             var tableGrown = JSON.parse(localStorage.getItem("grownPlants"));
             if(tableGrown==null)
@@ -157,10 +156,7 @@ window.onload = function(){
             plant.render();  
         });
     }
-    clear.addEventListener("click",function(){
-        localStorage.clear();
-        location.reload();
-    });
+
         addPlant.addEventListener('click',function(){
             const time = timehours.value;
             if(!time){
