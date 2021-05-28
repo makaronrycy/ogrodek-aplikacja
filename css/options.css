@@ -22,4 +22,21 @@ body, h1{
 li:hover{
     text-decoration: line-through;
     color:red;
+    cursor: pointer;
 }
+
+::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgba(200,200,200,0.3);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }

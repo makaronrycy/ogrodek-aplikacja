@@ -108,7 +108,7 @@ window.onload = function(){
             document.getElementById("image").src = `/Sprites/${this.type}${this.stage}.png`;
         }
         finishGrowing(){
-            var desc = prompt("Hooray! Your planrt has grown! Describe your productive time", "Here"); 
+            var desc = prompt("Hooray! Your plant has grown! Describe your productive time", "Here"); 
             
             var tableGrown = JSON.parse(localStorage.getItem("grownPlants"));
             if(tableGrown==null)

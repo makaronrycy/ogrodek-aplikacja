@@ -1,13 +1,3 @@
-function show_detail()
-{
-    var x = MouseEvent.clientX;
-    var y = MouseEvent.clientY;
-    var _plant = document.elementFromPoint(x, y);
-    var __plant = grownPlants[_plant.id];
-    document.getElementById("plantInfo").innerHTML=__plant[2]/3600000;
-    document.getElementById("plantInfo2").innerHTML=__plant[3];
-}
-
 window.onload = function(){
     const area = document.getElementById("workarea");
     let grownPlants = JSON.parse(localStorage.getItem("grownPlants"));
@@ -38,4 +28,3 @@ window.onload = function(){
 
     });
 }
-//<span><p>Time: ${timehours} hours</p><p>${desc}</p></span>
