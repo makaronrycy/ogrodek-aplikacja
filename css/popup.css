@@ -33,3 +33,16 @@ img{
 input{
     width:30%;
 }
+#death{
+
+    display:absolute;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 5px;
+    margin:0px;
+    height: fit-content;
+    
+}
+#death p{
+    margin:5px;
+}

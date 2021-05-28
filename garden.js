@@ -23,7 +23,7 @@ window.onload = function(){
         console.log(_plant);
         var __plant = grownPlants[_plant];
         console.log(__plant);
-        document.getElementById("plantInfo").innerHTML=__plant.time/3600000;
+        document.getElementById("plantInfo").innerHTML="Czas: "+__plant.time/3600000;
         document.getElementById("plantInfo2").innerHTML=__plant.desc;
 
     });
