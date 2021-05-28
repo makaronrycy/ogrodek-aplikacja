@@ -24,7 +24,7 @@ window.onload = function(){
         }
         var _plant = event.target.id;
         var __plant = grownPlants[_plant];
-        document.getElementById("plantInfo").innerHTML="Czas: "+__plant.time/3600000;
+        document.getElementById("plantInfo").innerHTML="Time: "+__plant.time/3600000;
         document.getElementById("plantInfo2").innerHTML=__plant.desc;
 
     });
