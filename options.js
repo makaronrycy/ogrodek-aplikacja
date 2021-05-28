@@ -27,6 +27,10 @@ function save_options()
   }  
   var status = document.getElementById("status");
   status.innerHTML = "Couldn't track site. (Blank)";
+  setTimeout(function() 
+  {
+    status.innerHTML = "";
+  }, 2000);
 }
 
 function show_options() {

@@ -31,6 +31,7 @@ header{
 li:hover{
     text-decoration: line-through;
     color:red;
+    cursor: pointer;
 }
 button{
     background-color: rgb(238, 238, 238);
@@ -45,3 +46,21 @@ button{
 button:hover{
     background-color: rgb(194, 194, 194);
 }
+
+
+
+::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgba(200,200,200,0.3);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
