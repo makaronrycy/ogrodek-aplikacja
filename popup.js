@@ -174,6 +174,7 @@ window.onload = function(){
                 break;
             }
             const ftime = time *3600;
+            localStorage.setItem('death', JSON.stringify("false"));
             
             addPlant.parentNode.parentNode.removeChild(addPlant.parentNode);
             const deadline = Date.now() + ftime;
