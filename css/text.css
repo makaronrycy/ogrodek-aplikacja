@@ -7,13 +7,23 @@
       font-family: PixelFont;
       font-size: 60%;
   }
-  button{
-    font-family: PixelFont;
-    font-size: 90%;
-  }
   input{
       font-family: PixelFont;
       font-size:100%;
   }
-
+  button{
+    font-family: PixelFont;
+    font-size: 90%;
+    background-color: rgb(238, 238, 238);
+    border: 1px solid black;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    overflow: visible;
+    padding:4px;
+}
+button:hover{
+    background-color: rgb(194, 194, 194);
+}
   
