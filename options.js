@@ -49,9 +49,12 @@ function show_options() {
   }
 }
 
+
 window.onload = function()
 {
   const track = document.getElementById("trackList");
+  const clear = document.querySelector(".clear");
+  show_options();
   document.getElementById("addTrack").addEventListener('click', save_options);
   track.addEventListener('click',function(event){
     const element = event.target;
@@ -68,8 +71,11 @@ window.onload = function()
     }
 
   })
-  show_options();
   
+  clear.addEventListener("click",function(){
+    localStorage.removeItem('banned_sites');
+    location.reload();
+  });
 }  
 
   

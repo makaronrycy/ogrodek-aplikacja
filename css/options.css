@@ -17,16 +17,14 @@ header{
 }
 #list
 {
-    height: 128px;
+    height: 108px;
     width: 240px;
-    margin-left: auto;
-    margin-right: auto;
     overflow-y: scroll;
     background-color:rgba(255, 255, 255, 0.5);
     border-radius: 3%;
 }
-#input{
-    text-align: center;
+#status{
+    height:14px;
 }
 li:hover{
     text-decoration: line-through;

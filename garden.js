@@ -1,11 +1,12 @@
 window.onload = function(){
     const area = document.getElementById("workarea");
+    const clear = document.querySelector(".clear");
     let grownPlants = JSON.parse(localStorage.getItem("grownPlants"));
     function addToGarden(id,type){
-        html = `<div>
+        html = `
             <img class="plant_class" id="${id}" src="./Sprites/${type}5.png"></img>
             
-        </div>`
+        `
         area.insertAdjacentHTML("afterbegin",html);
     }
     if(grownPlants){
@@ -17,7 +18,10 @@ window.onload = function(){
     }
 
     document.getElementById("workarea").addEventListener("mouseover", function(event){
-        
+        console.log(event.target);
+        if(event.target == workarea){
+            return;
+        }
         var _plant = event.target.id;
         var __plant = grownPlants[_plant];
         document.getElementById("plantInfo").innerHTML="Czas: "+__plant.time/3600000;
@@ -29,4 +33,4 @@ window.onload = function(){
         document.getElementById("plantInfo2").innerHTML="";
     })
 }
-//<span><p>Time: ${timehours} hours</p><p>${desc}</p></span>
+

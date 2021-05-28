@@ -4,7 +4,7 @@
     "name": "WorkGarden",
     "version": "1.0",
   
-    "description": "Motywuje do nie korzystania ze stron zabierających czas, tylko do pracowania tworząc ogródek.",
+    "description": "Motivates to not waste time on the internet, by growing your own personal garden.",
   
 
     "background": { "scripts": ["jquery-3.6.0.min.js","background.js"] },

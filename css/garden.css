@@ -20,6 +20,16 @@ body, h1{
     overflow-x: auto;
     height:156px;
 }
+header{
+    display:flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+}
+nav{
+    white-space: wrap;
+    text-align: center;
+}
+
 #desc{
     display:absolute;
     text-align: center;
