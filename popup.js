@@ -6,7 +6,6 @@ timeleft: date - date.now
 */
 //blue: 2hour, purp:4hour, red:8hour, blue:
 let data = localStorage.getItem("plant");
-console.log(data);
 let store;
 let tableGrown = JSON.parse(localStorage.getItem("grownPlants"));
 if(!tableGrown){
@@ -36,12 +35,7 @@ window.onload = function(){
             area.insertAdjacentHTML("beforeend",htmldeath);
         }
 
-        render(){
-                console.log("render smierc"+this.dead)
-                console.log(this.type)
-                console.log("this.deadline:"+this.deadline);
-                console.log("this.time:"+this.time);
-                
+        render(){               
                 const html = `<div>
                     <img id ="image" witdh ="128px" height="128px" src="/Sprites/${this.type}${this.stage}.png"></img>
                 </div>
@@ -58,21 +52,15 @@ window.onload = function(){
         const plant = this;
         const x = setInterval(function() {
             let death = JSON.parse(localStorage.getItem("death"));
-            console.log("Śmierć:"+death);
             if(death==true){
                 plant.Death();
                 clearInterval(x);
                 return;
             }
-                console.log("Odpalony zegar");
                 const now = new Date().getTime();
                 const distance = plant.deadline - now;
                 const time = duration - distance;
                 let progress = time/duration;
-                console.log("Deadline:"+plant.deadline);
-                console.log("Time:"+time);
-                console.log("Distance:"+distance);
-                console.log("Stage progress:"+progress);
                 if(progress<0.25){
                     plant.stage = 1;
                 }else if(progress<0.5){
@@ -84,7 +72,6 @@ window.onload = function(){
                 }else{
                     plant.stage = 5;
                 }
-                console.log("Stage:"+plant.stage);
                 if (distance <= 0) {
                     clearInterval(x);
                     plant.saveToStorage(); 
@@ -148,7 +135,6 @@ window.onload = function(){
         
         addPlant.parentNode.parentNode.removeChild(addPlant.parentNode);
         store.forEach(function(element){
-            console.log(element.dead);
             if(element.dead){
             return;
         }   
@@ -192,7 +178,6 @@ window.onload = function(){
             
             addPlant.parentNode.parentNode.removeChild(addPlant.parentNode);
             const deadline = Date.now() + ftime;
-            console.log(deadline);
             let plant = new Plant(img,1,ftime,deadline)
             plant.render();
         })

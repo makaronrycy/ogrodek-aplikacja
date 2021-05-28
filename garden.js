@@ -1,7 +1,6 @@
 window.onload = function(){
     const area = document.getElementById("workarea");
     let grownPlants = JSON.parse(localStorage.getItem("grownPlants"));
-    console.log(grownPlants);
     function addToGarden(id,type){
         html = `<div>
             <img class="plant_class" id="${id}" src="./Sprites/${type}5.png"></img>
@@ -20,9 +19,7 @@ window.onload = function(){
     document.getElementById("workarea").addEventListener("mouseover", function(event){
         
         var _plant = event.target.id;
-        console.log(_plant);
         var __plant = grownPlants[_plant];
-        console.log(__plant);
         document.getElementById("plantInfo").innerHTML="Czas: "+__plant.time/3600000;
         document.getElementById("plantInfo2").innerHTML=__plant.desc;
 

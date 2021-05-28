@@ -1,5 +1,3 @@
-console.log("background.js")
-
 function checkBanned(url){
     let data = JSON.parse(localStorage.getItem("banned_sites"));
     var death = false;
