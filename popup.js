@@ -30,7 +30,7 @@ window.onload = function(){
         Death(){
             localStorage.setItem('death', JSON.stringify("false"));
             localStorage.removeItem('plant');
-            document.getElementById("image").src = `/Sprites/dead_flower.png`;
+                document.getElementById("image").src = `/Sprites/dead_flower.png`;
             const htmldeath = `<span id="death"><p>Oh no! Your plant withered! Keep out from your blacklisted websites!</p></span>`
             area.insertAdjacentHTML("beforeend",htmldeath);
         }

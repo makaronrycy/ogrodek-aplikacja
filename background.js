@@ -18,7 +18,6 @@ function checkBanned(url){
     });
     
 }
-
 chrome.tabs.onUpdated.addListener(
     function(tabId,changeInfo) {
       if (changeInfo.url) {

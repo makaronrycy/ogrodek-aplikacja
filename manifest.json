@@ -7,7 +7,7 @@
     "description": "Motivates to not waste time on the internet, by growing your own personal garden.",
   
 
-    "background": { "scripts": ["jquery-3.6.0.min.js","background.js"] },
+    "background": { "scripts": ["background.js"] },
     "browser_action":{
         "default_popup":"popup.html",
         "script":"popup.js"
